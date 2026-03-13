@@ -1,3 +1,631 @@
-<div style="width:100%; magin:0 auto; text-align:center;">
-  <img src="https://theqr.openhost.cafe24.com/hosting/theqr/kim.jpg" width="100%">
-</div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도의원 후보 김태종 - 지성과 행동으로 지역의 내일을 엽니다</title>
+    <!-- Google Fonts: Noto Sans KR -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+        }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Variables */
+        :root {
+            --primary-red: #E61E2B; /* 국민의힘 레드 */
+            --dark-red: #A5141D; /* 깊은 레드 */
+            --dark-blue: #002C5F; /* 신뢰감을 주는 다크 블루 */
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --text-gray: #666;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section {
+            padding: 120px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 15px auto 0;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-red);
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-red);
+            transition: all 0.3s ease-in-out;
+            border-radius: 3px;
+        }
+
+        /* ==========================================
+           1. Main Banner (Renewed Style)
+           ========================================== */
+        .main-banner {
+            height: 100vh;
+            min-height: 800px;
+            background: #fff;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .banner-bg-number {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40rem;
+            font-weight: 900;
+            color: rgba(230, 30, 43, 0.04);
+            line-height: 1;
+            z-index: 0;
+            user-select: none;
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            justify-content: space-between;
+        }
+
+        .banner-text {
+            flex: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards 0.2s;
+        }
+        .banner-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end; 
+            opacity: 0;
+            transform: translateX(50px);
+            animation: fadeInRight 0.8s forwards 0.4s;
+        }
+        .banner-image img {
+            max-width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.15));
+        }
+
+        .banner-label {
+            display: inline-flex;
+            align-items: center;
+            background: var(--dark-blue);
+            color: white;
+            padding: 6px 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+        .banner-label span {
+            color: var(--primary-red);
+            margin-right: 8px;
+        }
+        .banner-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+            word-break: keep-all;
+        }
+        .banner-title mark {
+            background: transparent;
+            color: var(--primary-red);
+        }
+        .banner-desc {
+            font-size: 1.4rem;
+            color: #555;
+            margin-bottom: 40px;
+            word-break: keep-all;
+            font-weight: 400;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 20px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+        .btn-primary {
+            background: var(--primary-red);
+            color: #fff;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(230, 30, 43, 0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(230, 30, 43, 0.3);
+            background: var(--dark-red);
+        }
+        .btn-outline {
+            border: 2px solid #ddd;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            border-color: var(--dark-blue);
+            color: var(--dark-blue);
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ==========================================
+           2. 후보자 소개
+           ========================================== */
+        .intro-section { background: var(--white); }
+        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .video-placeholder { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 15px; display: flex; justify-content: center; align-items: center; color: white; position: relative; overflow: hidden; cursor: pointer; }
+        .video-placeholder::before { content: '▶'; font-size: 3rem; }
+        .intro-text h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--dark-blue); word-break: keep-all; }
+        .intro-text p { margin-bottom: 15px; font-size: 1.1rem; color: #555; word-break: keep-all; }
+
+        /* ==========================================
+           3. 주요 공약
+           ========================================== */
+        .pledge-section { background: var(--light-gray); }
+        .pledges-header { text-align: center; margin-bottom: 60px; }
+        .pledge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .pledge-card { background: white; padding: 40px; border-radius: 24px; border: 1px solid #e2e8f0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+        .pledge-card:hover { transform: translateY(-10px); border-color: var(--primary-red); box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); }
+        .pledge-icon { width: 60px; height: 60px; background: #f8fafc; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; color: var(--primary-red); }
+        .pledge-icon svg { width: 30px; height: 30px; }
+        .pledge-card h4 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark-blue); }
+        .pledge-card p { color: var(--text-gray); font-size: 1rem; margin-bottom: 25px; line-height: 1.6; flex-grow: 1; word-break: keep-all; }
+        .pledge-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-red); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; }
+
+        /* ==========================================
+           4. 전문성 및 경력 (Timeline)
+           ========================================== */
+        .experience-section { background: var(--white); position: relative; }
+        .experience-layout { display: flex; gap: 60px; align-items: flex-start; }
+        .experience-image { flex: 1; position: sticky; top: 120px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .experience-image img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 9 / 6; }
+        .experience-timeline { flex: 1; padding: 20px 0; }
+        .timeline-list { position: relative; padding-left: 30px; }
+        .timeline-list::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; }
+        .timeline-item-new { position: relative; margin-bottom: 30px; }
+        .timeline-dot-new { position: absolute; left: -30px; top: 6px; width: 16px; height: 16px; background: var(--primary-red); border-radius: 50%; z-index: 1; box-shadow: 0 0 0 4px var(--white); }
+        .timeline-content-new { background: var(--light-gray); padding: 25px 30px; border-radius: 16px; transition: 0.3s ease; border: 1px solid transparent; }
+        .timeline-content-new:hover { transform: translateX(10px); background: var(--white); border-color: var(--primary-red); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .timeline-content-new strong { display: block; font-size: 1.25rem; color: var(--dark-blue); margin-bottom: 8px; }
+        .timeline-content-new p { color: var(--text-gray); margin: 0; word-break: keep-all; }
+
+        /* ==========================================
+           5. 현장소통
+           ========================================== */
+        .field-section { background: #fff; }
+        .insta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .insta-item { aspect-ratio: 1 / 1; background: #eee; border-radius: 10px; overflow: hidden; }
+        .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.3s; }
+        .insta-item:hover img { scale: 1.1; }
+
+        /* ==========================================
+           6. 시민의 목소리
+           ========================================== */
+        .voice-section { background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%); color: var(--white); position: relative; overflow: hidden; }
+        .voice-section::before { content: '"'; position: absolute; top: -20px; left: 50px; font-size: 20rem; opacity: 0.1; font-family: serif; }
+        .voice-slider { max-width: 850px; margin: 0 auto; text-align: center; position: relative; padding: 20px 0 40px; z-index: 2; }
+        .voice-card { display: none; animation: fadeIn 0.5s; }
+        .voice-card.active { display: block; }
+        .voice-text { font-size: 1.5rem; font-style: italic; margin-bottom: 20px; font-weight: 300; line-height: 1.8; word-break: keep-all; }
+        .voice-author { font-weight: 700; color: #ffda44; font-size: 1.1rem; }
+
+        /* ==========================================
+           7. 하단
+           ========================================== */
+        footer { background: #111; color: #ccc; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .sns-icons { display: flex; gap: 15px; margin-top: 25px; }
+        .sns-btn { width: 45px; height: 45px; background: #333; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; transition: all 0.3s ease; }
+        .sns-btn svg { width: 20px; height: 20px; fill: currentColor; }
+        .sns-btn:hover { background: var(--primary-red); transform: translateY(-3px); color: white; }
+        .legal-notice { border-top: 1px solid #333; padding-top: 20px; text-align: center; font-size: 0.8rem; color: #777; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ==========================================
+           Mobile Responsive
+           ========================================== */
+        @media (max-width: 768px) {
+            section { padding: 80px 0; }
+            .section-title { font-size: 2rem; }
+            .hamburger { display: flex; }
+            .nav-links { position: absolute; top: 80px; left: -100%; width: 100%; background: white; flex-direction: column; text-align: center; gap: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); transition: left 0.3s; }
+            .nav-links.active { left: 0; }
+            .nav-links a { display: block; padding: 20px; border-bottom: 1px solid #eee; }
+            
+            .main-banner { height: auto; min-height: auto; padding-bottom: 0; }
+            .banner-bg-number { font-size: 20rem; top: 30%; }
+            .banner-content { flex-direction: column; text-align: center; }
+            .banner-text { padding: 60px 20px; order: 1; }
+            .banner-image { order: 2; height: 500px; width: 100%; justify-content: center; }
+            .banner-title { font-size: 2.8rem; }
+            .banner-desc { border: none; padding: 0; }
+            .btn-group { justify-content: center; }
+
+            .intro-grid { grid-template-columns: 1fr; }
+            .experience-layout { flex-direction: column; }
+            .experience-image { display: none; }
+            .insta-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .sns-icons { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">국민의힘 김태종</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#home">홈</a>
+                <a href="#intro">후보소개</a>
+                <a href="#pledge">주요공약</a>
+                <a href="#experience">전문성</a>
+                <a href="#field">현장소통</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. 리뉴얼된 메인 배너 -->
+    <section class="main-banner" id="home">
+        <div class="banner-bg-number">2</div>
+        
+        <div class="container banner-content">
+            <div class="banner-text">
+                <div class="banner-label"><span>●</span> 국민의힘 제2선거구 도의원 후보</div>
+                <h1 class="banner-title">
+                    지금 꼭 필요한 사람!<br>
+                    <mark>김태종</mark> 입니다
+                </h1>
+                <p class="banner-desc">
+                    서울대 정책 전문가의 혜안과<br>
+                    법률가의 정직함으로 내일을 새롭게 열겠습니다.
+                </p>
+                <div class="btn-group">
+                    <a href="#pledge" class="btn-primary">핵심 공약 보기</a>
+                    <a href="#intro" class="btn-outline">후보자 스토리</a>
+                </div>
+            </div>
+            <div class="banner-image">
+                <img src="https://via.placeholder.com/800x1200/f8f9fa/333333?text=김태종+후보+사진" alt="김태종 후보자">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 후보자 소개 -->
+    <section class="intro-section" id="intro">
+        <div class="container">
+            <h2 class="section-title">비전과 철학</h2>
+            <div class="intro-grid">
+                <div class="video-placeholder" onclick="alert('인터뷰 영상이 재생됩니다.')">
+                    <div style="position:absolute; bottom:20px; left:20px; font-weight:bold;">[비전 인터뷰] 지역의 미래를 묻다</div>
+                </div>
+                <div class="intro-text">
+                    <h3>서울대 시절부터 시작된<br>공동체에 대한 깊은 고민</h3>
+                    <p>저는 서울대학교에서 정책을 공부하며 국가의 발전이 곧 지역의 행복에서 시작된다는 것을 깨달았습니다. 탁상행정이 아닌 발로 뛰는 정책 전문가가 되고자 합니다.</p>
+                    <p>우리 지역이 가진 잠재력을 깨우고, 실질적인 변화를 이끌어내기 위해 저의 모든 역량을 쏟아붓겠습니다. 낡은 정치를 넘어선 똑똑한 지방 자치, 김태종이 증명하겠습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 주요 공약 -->
+    <section class="pledge-section" id="pledge">
+        <div class="container">
+            <div class="pledges-header">
+                <h2 class="section-title" style="margin-bottom: 10px;">주요 3대 약속</h2>
+                <p>논리적으로 분석하고 과감하게 추진하겠습니다.</p>
+            </div>
+            
+            <div class="pledge-grid">
+                <div class="pledge-card">
+                    <div class="pledge-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-4 4 4 5-5"/></svg>
+                    </div>
+                    <h4>지역 경제 활성화</h4>
+                    <p>중소상공인 맞춤형 정책 자금 확대 및 지역 특화 산업 클러스터 조성을 통해 활력 넘치는 경제를 만들겠습니다.</p>
+                    <a href="#" class="pledge-link">상세 보기 <span>→</span></a>
+                </div>
+                <div class="pledge-card">
+                    <div class="pledge-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h4>스마트 관광 거점화</h4>
+                    <p>지역 문화 유산과 IT 기술을 접목한 스마트 투어 시스템을 구축하여 연간 방문객 200만 명 시대를 열겠습니다.</p>
+                    <a href="#" class="pledge-link">상세 보기 <span>→</span></a>
+                </div>
+                <div class="pledge-card">
+                    <div class="pledge-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/></svg>
+                    </div>
+                    <h4>복지 사각지대 제로</h4>
+                    <p>AI 기반 위기가구 발굴 시스템 도입 및 시니어 맞춤형 일자리 창출로 모두가 행복한 따뜻한 공동체를 실현합니다.</p>
+                    <a href="#" class="pledge-link">상세 보기 <span>→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 전문성 및 경력 (연혁 추가) -->
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <h2 class="section-title">김태종의 성실함</h2>
+            <div class="experience-layout">
+                <div class="experience-image">
+                    <img src="https://via.placeholder.com/600x800/e9e9e9/333333?text=발로+뛰는+김태종" alt="김태종 활동 모습">
+                </div>
+                <div class="experience-timeline">
+                    <div class="timeline-list">
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>통영고등학교 총동창회 수석부회장</strong>
+                                <p>자랑스러운 통영의 인재들이 지역 사회와 상생할 수 있도록 동문 화합과 발전을 이끌고 있습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>통영초등학교 총동창회장</strong>
+                                <p>어린 시절의 꿈을 키워준 모교를 위해 헌신하며, 후배들의 든든한 지원군 역할을 다하고 있습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>사법연수원(26기) 수료</strong>
+                                <p>법률 전문가로서의 역량을 깊이 있게 다지고, 시민의 권리를 보호하기 위한 실무를 익혔습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>사법시험(46회) 합격</strong>
+                                <p>공정과 정의가 살아있는 사회를 만들겠다는 굳은 신념으로 치열하게 노력하여 합격의 결실을 맺었습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>서울대학교 정치학과 졸업</strong>
+                                <p>국가 정책과 정치 철학을 심도 있게 탐구하며, 더 나은 세상을 만들기 위한 학문적 기반을 다졌습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>통영고등학교 졸업</strong>
+                                <p>지역의 인재로서 자부심을 품고 학업에 매진하며 지역 사회에 기여하겠다는 큰 꿈을 키웠습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>통영중학교 졸업</strong>
+                                <p>꿈을 향한 도전의 시작, 고향 통영에서 성실하게 학창 시절을 보냈습니다.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item-new">
+                            <div class="timeline-dot-new"></div>
+                            <div class="timeline-content-new">
+                                <strong>통영초등학교 졸업</strong>
+                                <p>모교인 통영초등학교에서 기초를 다지며 큰 꿈을 키우기 시작했습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 현장 속으로 -->
+    <section class="field-section" id="field">
+        <div class="container">
+            <h2 class="section-title">현장 속으로</h2>
+            <div class="insta-grid">
+                <div class="insta-item"><img src="https://via.placeholder.com/400/eeeeee/333333?text=시장방문" alt=""></div>
+                <div class="insta-item"><img src="https://via.placeholder.com/400/eeeeee/333333?text=청년간담회" alt=""></div>
+                <div class="insta-item"><img src="https://via.placeholder.com/400/eeeeee/333333?text=민원청취" alt=""></div>
+                <div class="insta-item"><img src="https://via.placeholder.com/400/eeeeee/333333?text=정책연구" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 시민의 목소리 -->
+    <section class="voice-section">
+        <div class="container">
+            <h2 class="section-title">시민이 말하는 김태종</h2>
+            <div class="voice-slider" id="voiceSlider">
+                <div class="voice-card active">
+                    <p class="voice-text">"말만 앞세우는 정치인이 아닙니다. 수치로 증명하고 현장에서 답을 찾는 모습에 깊은 신뢰를 느꼈습니다."</p>
+                    <p class="voice-author">- 전통시장 상인회장 이OO -</p>
+                </div>
+                <div class="voice-card">
+                    <p class="voice-text">"청년들의 고민을 자기 일처럼 들어주는 후보입니다. 우리 지역의 미래를 맡길 수 있는 지성인입니다."</p>
+                    <p class="voice-author">- 지역 대학교 학생 박OO -</p>
+                </div>
+                <div class="voice-card">
+                    <p class="voice-text">"복지 정책에 대한 전문성이 탁월합니다. 소외된 이웃을 챙기는 따뜻한 정책을 기대합니다."</p>
+                    <p class="voice-author">- 사회복지사 최OO -</p>
+                </div>
+                <div class="voice-card">
+                    <p class="voice-text">"말로만 듣던 '발로 뛰는 현장 전문가'라는 말을 실감했습니다. 우리 상인들의 고충을 수첩 가득 적어가시던 뒷모습에서 진심을 보았습니다."</p>
+                    <p class="voice-author">- 소상공인 김OO -</p>
+                </div>
+                <div class="voice-card">
+                    <p class="voice-text">"약속, 김태종 후보라면 반드시 지킬 거라 믿습니다. 도의회에서 교육 정책 전문가로 활동해 온 이력이 그 증거니까요"</p>
+                    <p class="voice-author">- 학부모 최OO -</p>
+                </div>
+                <div class="voice-card">
+                    <p class="voice-text">"도의원은 권위적인 자리가 아니라 봉사하는 자리라고 늘 말씀하시죠. 낮은 자세로 경청하면서도, 해결책을 찾을 때는 누구보다 날카로운 모습이 든든합니다."</p>
+                    <p class="voice-author">- 통영시민 안OO -</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 하단 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color:white; margin-bottom:10px;">김태종 선거캠프</h3>
+                    <p style="font-size:0.9rem;">주소: 경상남도 통영시 광도면 죽림해안로 66 4층 (성원빌딩)</p>
+                    <p style="font-size:0.9rem;">전화: 055-123-4567 | 이메일: info@theqr.kr</p>
+                    <div class="sns-icons">
+                        <a href="#" class="sns-btn" title="네이버 블로그"><svg viewBox="0 0 24 24"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg></a>
+                        <a href="#" class="sns-btn" title="페이스북"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="#" class="sns-btn" title="인스타그램"><svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.584.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.584-.071 4.85c-.055 1.17-.249 1.805-.415 2.227-.217.562-.477-.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.056.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.584-.015-4.85-.071c-1.17-.055-1.805-.249-2.227-.415-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.015-3.584.071-4.85c.055-1.17.249-1.805.415-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413 1.266-.057 1.646-.07 4.85-.07zM12 5.837a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-9.145a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+                        <a href="#" class="sns-btn" title="유튜브"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505a3.017 3.017 0 00-2.122 2.136C0 8.055 0 12 0 12s0 3.945.501 5.814a3.015 3.015 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.945 24 12 24 12s0-3.945-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+                <div style="text-align:right;">
+                    <img src="https://via.placeholder.com/150x50/333333/ffffff?text=국민의힘+로고" alt="정당 로고">
+                    <p style="margin-top:20px; font-weight:500;">여러분의 한 표가<br>우리 지역의 미래를 바꿉니다.</p>
+                </div>
+            </div>
+            <div class="legal-notice">
+                제작: 더큐알(대표 정영민) | 본 페이지는 선거법을 준수하여 제작되었습니다. <br>
+                &copy; 2025 Candidate Kim Tae-jong. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Citizen Voice Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.voice-card');
+        function nextSlide() {
+            if(slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 4000);
+    </script>
+</body>
+</html>
